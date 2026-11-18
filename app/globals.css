@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* From openscience.sh's CSS: dark #191919 base, #9fb7d0 brand, CMU Concrete for everything. */
+@font-face {
+  font-family: "CMU Concrete";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/cmunorm.woff2") format("woff2");
+}
+@font-face {
+  font-family: "CMU Concrete";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/cmunobx.woff2") format("woff2");
+}
+
+@theme {
+  --color-bg: #191919;
+  --color-inset: #161616;
+  --color-row: #242424;
+  --color-bar: #1c1c1c;
+  --color-line: #2e2e2e;
+  --color-text: #d6d6d6;
+  --color-strong: #f2f2f2;
+  --color-weak: #a8a8a8;
+  --color-brand: #9fb7d0;
+  --color-ok: #7cb187;
+  --color-stop: #d97b76;
+  --font-serif: "CMU Concrete", "Latin Modern Roman", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+}

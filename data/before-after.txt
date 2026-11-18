@@ -1,0 +1,13 @@
+# 2026-11-18T01:35:05Z macOS 26.5.1 arm64; cap 30 s
+shipped-2.0.153 | no env | version | exit=124 | 30.18s | bytes=0 | 
+shipped-2.0.153 | no env | run | exit=124 | 30.18s | bytes=0 | 
+shipped-2.0.153 | CBOR_NATIVE_ACCELERATION_DISABLED=true | version | exit=0 | 0.36s | bytes=8 | 2.0.153
+shipped-2.0.153 | CBOR_NATIVE_ACCELERATION_DISABLED=true | run | exit=0 | 3.22s | bytes=149 | The word "ready" is achieved by simply providing t
+main-ci-path-build | no env | version | exit=124 | 30.15s | bytes=0 | 
+main-ci-path-build | no env | run | exit=124 | 30.17s | bytes=0 | 
+main-ci-path-build | CBOR_NATIVE_ACCELERATION_DISABLED=true | version | exit=0 | 0.33s | bytes=47 | 0.0.0-fix/macos-native-probe-hang-202611180123
+main-ci-path-build | CBOR_NATIVE_ACCELERATION_DISABLED=true | run | exit=0 | 3.28s | bytes=40 | ready
+main+fix-ci-path-build | no env | version | exit=0 | 0.45s | bytes=47 | 0.0.0-fix/macos-native-probe-hang-202611180130
+main+fix-ci-path-build | no env | run | exit=0 | 2.90s | bytes=40 | ready
+terminal | shipped-2.0.153 | --version | exit=124 | 45.03s | 
+# terminal row: launched via 'open -a Terminal' (responsible process com.apple.Terminal); system log: 'checking kTCCServiceSystemPolicyNetworkVolumes for openscience', promptType 1; nothing printed until the 45 s cap

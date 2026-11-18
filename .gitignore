@@ -1,0 +1,7 @@
+node_modules
+.next
+*.tsbuildinfo
+.vercel
+.env*
+bench/sdk-patched
+bench/node_modules

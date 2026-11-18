@@ -1,0 +1,38 @@
+diff --git a/backend/cli/script/build-options.ts b/backend/cli/script/build-options.ts
+index d57e7293..ef6329a5 100644
+--- a/backend/cli/script/build-options.ts
++++ b/backend/cli/script/build-options.ts
+@@ -27,6 +27,12 @@ export function buildOptions(args: string[], host = { os: process.platform as st
+   return { headless, targets, output: headless ? "dist/headless" : "dist" }
+ }
+ 
++/** A compiled binary never contains cbor-x's native addon, and its lookup under the
++ * build path (/home/runner on CI) can block on a macOS permission prompt. */
++export const nativeAddonDefines = {
++  "process.env.CBOR_NATIVE_ACCELERATION_DISABLED": JSON.stringify("true"),
++}
++
+ /** Resolve before reading a previously generated manifest, so a headless build
+  * never embeds stale web assets or requires the frontend directory to exist. */
+ export function headlessAssets(root: string): BunPlugin {
+diff --git a/backend/cli/script/build.ts b/backend/cli/script/build.ts
+index 2b4d0b21..697a4d13 100755
+--- a/backend/cli/script/build.ts
++++ b/backend/cli/script/build.ts
+@@ -16,7 +16,7 @@ import pkg from "../package.json"
+ import { Script } from "@synsci/script"
+ import { assertLinuxArm64PageSize } from "./linux-arm64-page-size"
+ import { nativePackageName } from "./native-targets"
+-import { buildOptions, headlessAssets } from "./build-options"
++import { buildOptions, headlessAssets, nativeAddonDefines } from "./build-options"
+ 
+ const options = buildOptions(process.argv.slice(2))
+ if (options.headless && Script.release)
+@@ -103,6 +103,7 @@ for (const item of options.targets) {
+     entrypoints: ["./src/bootstrap.ts"],
+     define: {
+       ...keyDefines,
++      ...nativeAddonDefines,
+       OPENSCIENCE_VERSION: `'${Script.version}'`,
+       OPENSCIENCE_CHANNEL: `'${Script.channel}'`,
+       OPENSCIENCE_LIBC: item.os === "linux" ? `'${item.abi ?? "glibc"}'` : "",
