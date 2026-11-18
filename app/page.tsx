@@ -3,7 +3,6 @@ import path from "node:path";
 import { parseRuns, timedOut, type Run } from "@/lib/runs";
 
 const FORK = "https://github.com/cherylaurelia/openscience";
-const COMMIT = "2b999db613980459edee490ab05077d72d3eba48";
 const DEMO_REPO = "https://github.com/cherylaurelia/synthetic-sciences-demo";
 
 const BUILD_LABEL = new Map([
@@ -105,7 +104,7 @@ export default function Page() {
         One define in the release build fixes it: tell cbor-x not to look for a native addon the binary never contains.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <a className="rounded-md bg-strong px-4 py-2 text-bg hover:bg-white" href={`${FORK}/commit/${COMMIT}`}>
+        <a className="rounded-md bg-strong px-4 py-2 text-bg hover:bg-white" href={`${FORK}/commits/fix/macos-native-probe-hang`}>
           View the fix (fork branch)
         </a>
         <a className="rounded-md border border-line px-4 py-2 text-strong hover:bg-row" href={DEMO_REPO}>
